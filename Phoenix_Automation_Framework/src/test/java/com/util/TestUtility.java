@@ -4,8 +4,14 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 
+import com.github.javafaker.Faker;
 import com.google.gson.Gson;
+import com.pojo.CreateJobRequestPOJO;
+import com.pojo.Customer;
+import com.pojo.CustomerAddress;
+import com.pojo.CustomerProduct;
 import com.pojo.LoginRequestPOJO;
+import com.pojo.Problem;
 
 import io.restassured.http.Header;
 
@@ -49,6 +55,35 @@ public class TestUtility {
 		String jsonData = TestUtility.convertToJson(loginRequestPOJO);
 		return given().header(myHeader).and().body(jsonData).log().all().when().post("/v1/login").then().log().all().extract().path("data.token");
 		
+	}
+	
+	public static CreateJobRequestPOJO createJobRequestJSON() {
+		Faker faker = new Faker();
+		String fName = faker.name().firstName();
+		String lName = faker.name().lastName();
+		String phoneNumber = faker.phoneNumber().cellPhone();
+		String emailAddress = faker.internet().emailAddress();
+		String aptNumber = faker.address().buildingNumber();
+		String aptName = faker.address().streetName();
+		String streetName = faker.address().streetName();
+		String IMEINUMBER = faker.numerify("8##############");
+		
+		
+		
+        Customer customer = new Customer(fName, lName, phoneNumber, null, emailAddress, null);
+		
+		CustomerAddress address  = new CustomerAddress(aptNumber, aptName, streetName, "landmark1", "area1", "421306", "India", "Maharashtra");
+		
+		CustomerProduct product = new CustomerProduct("2023-12-02T18:30:00.000Z", IMEINUMBER, IMEINUMBER, IMEINUMBER, "2023-12-02T18:30:00.000Z", 1, 1);
+		
+		Problem[] deviceproblems = new Problem[1];
+		
+		deviceproblems[0] = new Problem(1, "Phone not working");
+		
+		
+		CreateJobRequestPOJO createJobRequestPOJO = new CreateJobRequestPOJO(0,2,1,1,customer,address, product, deviceproblems);
+		
+		return createJobRequestPOJO;
 	}
 
 }
