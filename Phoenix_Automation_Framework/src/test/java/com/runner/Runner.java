@@ -29,7 +29,7 @@ public class Runner {
 		JobSearchPOJO job_search = new JobSearchPOJO("JOB_28616");
 		System.out.println(TestUtility.convertToJson(job_search));
 		
-		AssignEngineerRequestPOJO assignEngineerRequestPOJO = new AssignEngineerRequestPOJO("JOB_28616", 2);
+		AssignEngineerRequestPOJO assignEngineerRequestPOJO = new AssignEngineerRequestPOJO(TestUtility.jobId, 2);
 		System.out.println(TestUtility.convertToJson(assignEngineerRequestPOJO));
 		
 		myproblem[0] = new Problem(2, "fixed");
