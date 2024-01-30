@@ -17,6 +17,8 @@ import io.restassured.http.Header;
 
 public class TestUtility {
 	
+	public static int jobId;
+	
 	public static String convertToJson(Object refVariable) {
 		
 		Gson gson = new Gson();

@@ -32,10 +32,10 @@ public class CreateJobAPITest {
 		
 		Header myHeader2 = new Header("Authorization", TestUtility.generateTokenFor(Role.FD));
 		
-		int data = given().header(myHeader).and().header(myHeader2).and().body(payload).log().all().when().post("/v1/job/create").then().log().all().assertThat().statusCode(200)
+		TestUtility.jobId = given().header(myHeader).and().header(myHeader2).and().body(payload).log().all().when().post("/v1/job/create").then().log().all().assertThat().statusCode(200)
 				      .and().assertThat().body("message",equalTo("Job created successfully. ")).and().time(lessThan(1500L)).extract().path("data.id");
 		
-		System.out.println(data);
+		System.out.println(TestUtility.jobId);
 							   
 							   
 		
