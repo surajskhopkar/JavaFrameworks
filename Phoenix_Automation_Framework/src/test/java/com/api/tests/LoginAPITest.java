@@ -21,7 +21,7 @@ public class LoginAPITest {
 		myHeader = new Header("Content-Type","application/json");
 	}
 
-	@Test(description = "Verify if login is successful")
+	@Test(description = "Verify if user is able to login into the Application via api")
 	public void loginAPITest() {
 		
 		

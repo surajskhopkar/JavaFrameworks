@@ -1,9 +1,6 @@
 package com.util;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.lessThan;
-
 import com.github.javafaker.Faker;
 import com.google.gson.Gson;
 import com.pojo.CreateJobRequestPOJO;
