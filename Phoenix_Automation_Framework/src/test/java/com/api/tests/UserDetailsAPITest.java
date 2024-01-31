@@ -1,6 +1,5 @@
 package com.api.tests;
 import static io.restassured.RestAssured.*;
-
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.util.*;
@@ -21,6 +20,7 @@ public class UserDetailsAPITest {
 	@Test
 	public void userDetailsAPITest()  {
 		Response myResponse = given().header(myAuthorizationHeader).when().get("/v1/userdetails");
+		System.out.println(myResponse);
 		}
 
 }
